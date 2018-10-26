@@ -32,8 +32,8 @@ app.get('/contact', function(req,res){
   res.render("pages/contact");
 });
 
-app.listen(3000, function(){
-  console.log('Servidor rodando na porta 3000.');
+app.listen(8080, function(){
+  console.log('Servidor rodando na porta 8080.');
 });
 
 app.get('/about', (req, res) => {
