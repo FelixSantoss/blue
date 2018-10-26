@@ -1,0 +1,407 @@
+<%- contentFor('body') %>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+    <div class="container">
+        <div style="height: 80px; width: 100%;background: #224d86">
+
+            <p class="titulo-tutorial">Gerencie seus usuarios utilizando
+                <strong style="color: #ffffff;">Kendo-UI/Pie Charts</strong>
+            </p>
+        </div>
+        <!-- ///////////////////////////////////CONTEUDO////////////////////////////////////////////////////////// -->
+        <div style="height: 1800px; width: 100%;background: #ffffff">
+            <p style="  font-size:100%; color: #1f497f; padding-left: 5px;     padding-top: 32px;">Utilizando o gráfico para ver a faixa etária dos usuários.
+
+            </p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" style="display:block;     width: 100%;
+            text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-1704070251680816"
+                data-ad-slot="2858090372"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <p style="    color: #8b939d;
+            padding-left: 17px;
+            font-size: 14px;"> Abaixo podemos ver a função que vamos implementar para gerenciar nossos usuários. Nosso gráfico sera alimentado
+                por um
+                <strong> objeto JSON</strong> que sera extraido da nossa gridUsuários, o Script cria um gráfico dinâmicamento, mostrando
+                a relação de idade dos usuarios cadastrados na base, nesse caso faz sentido mostra em porcentagem(%).
+            </p>
+            <p style="      color: #8b939d;
+        margin-top: -12px;   padding-left: 17px;
+        font-size: 14px;">
+                Se nosso gráfico lida com o objeto
+                <strong>JSON</strong> , emtão podemos atrelar um response de nossa
+                <strong>API</strong> .
+            </p>
+
+            <div class="col-sm-12">
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div id="example" style="height: 400px;">
+                            <div class="demo-section k-content wide">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div id="grid"></div>
+                        <button class="btn save_grid ">Salvar e gerar gráfico</button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p style="  font-size:100%; color: #1f497f; padding-left: 5px;     padding-top: 32px;">
+                            <strong>Script</strong>
+                        </p>
+                        <script async src="//jsfiddle.net/duzownfr/12/embed/js,html/dark/"></script>
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    ///////////////////////////////////////////////////Bar graphics//////////////////////////////////////////////////////////////////
+                    {
+                        var displayedDataAsJSON = [];
+                        var dadosGrid = [];
+                        var displayedDataGarphic = []
+                        function createChart() {
+                            $("#chart").kendoChart({
+                                legend: {
+                                    position: "top"
+                                }, seriesDefaults: {
+                                    labels: {
+                                        template: "#= category # - #= kendo.format('{0:P}', percentage)#",
+                                        position: "outsideEnd",
+                                        visible: true,
+                                        background: "red    "
+                                    }
+                                },
+                                title: {
+                                    position: "bottom",
+                                    text: "Dados estabelecidos ate o momento"
+                                },
+                                legend: {
+                                    visible: false
+                                },
+                                chartArea: {
+                                    background: ""
+                                },
+                                seriesDefaults: {
+                                    labels: {
+                                        visible: true,
+                                        background: "transparent",
+                                        template: "#= category #: \n #= value#%"
+                                    }
+                                },
+                                series: [{
+                                    type: "pie",
+                                    startAngle: 150,
+                                    data: dadosGrid
+                                }],
+                                tooltip: {
+                                    visible: true,
+                                    format: "{0}%",
+                                }
+                            });
+                        }
+
+
+
+                    }
+
+                    //////////////////////////////////////////////////grid usuarios//////////////////////////////////////////////////////////////////
+
+                    {
+
+
+
+                        var jGrid = [
+
+                            { usuario: "Rodolfo", idade: 10 },
+                            { usuario: "Pamela", idade: 6 },
+                            { usuario: "Roberta", idade: 16 },
+                            { usuario: "Silva", idade: 32 },
+                            { usuario: "Rodrigo", idade: 23 },
+
+                            { usuario: "Barbara", idade: 20 },
+                            { usuario: "Barbara", idade: 20 },
+                            { usuario: "Barbara", idade: 20 },
+                            { usuario: "Pedro", idade: 19 },
+                            { usuario: "Paula", idade: 29 },
+                            { usuario: "Raquel", idade: 18 },
+                            { usuario: "Raquel", idade: 18 },
+
+                            { usuario: "Raquel", idade: 18 },
+
+                            { usuario: "Raquel", idade: 18 },
+
+                            { usuario: "Raquel", idade: 18 },
+
+                            { usuario: "Ana", idade: 17 }
+
+                        ]
+                            ;
+
+
+                        $(document).ready(function () {
+                            $("#grid").kendoGrid({
+                                dataSource: {
+                                    type: "json",
+                                    data: jGrid,
+                                    pageSize: 200
+                                },
+                                editable: true,
+                                toolbar: ["add"],
+                                height: 400,
+
+
+
+
+                                columns: [
+
+                                    {
+                                        field: "usuario",
+                                        title: "usuario",
+                                        width: 250
+                                    }, {
+                                        field: "idade",
+                                        title: "idade",
+                                        width: 120
+                                    },
+                                    {
+                                        command: {
+                                            text: "Excluir",
+                                            width: 100,
+                                            click: editarDefinicoes
+                                        }
+                                    }
+                                ]
+                            });
+                        });
+
+
+                        function editarDefinicoes(e) {
+
+                            console.log('o');
+
+                            e.preventDefault();
+
+                            grid = $("#grid").data("kendoGrid"),
+                                dataItem = grid.dataItem($(e.currentTarget).closest("tr"));
+
+                            grid.dataSource.remove(dataItem);
+                        }
+
+                        function carregaelemento() {
+                            for (let index = 0; index < 20; index++) {
+                                jGrid.push({ usuario: index, idade: index });
+
+                            }
+                            var grid = $("#grid").data("kendoGrid");
+                            grid.addRow();
+                            grid.refresh();
+                            console.log(jGrid);
+                            $(".k-pager-refresh").trigger("click");
+
+
+
+
+
+                        }
+
+
+
+                        function getjsonElement(idgrid) {
+                            var displayedData = $(idgrid).data().kendoGrid.dataSource.data()
+                            jGrid.length = [];
+                            let gjGrid = JSON.stringify(displayedData);
+                            jGrid = JSON.parse(gjGrid);
+                            AtualizarValorGraficoUsuarios(null)
+                        }
+
+                        function AtualizarValorGraficoUsuarios(obj) {
+                            dadosGrid.length = [];
+
+                            let val1 = 0;
+                            let val2 = 0;
+                            let val3 = 0;
+                            let val4 = 0;
+                            let val5 = 0;
+                            let val6 = 0;
+                            let val7 = 0;
+
+                            var valorTotal = jGrid.length;
+
+                            $.each(jGrid, function (key, x) {
+
+                                if (x.idade >= 6 && x.idade <= 10) {
+                                    val1++;
+                                }
+                                if (x.idade >= 11 && x.idade <= 12) {
+
+                                    val2++;
+
+                                }
+                                if (x.idade >= 13 && x.idade <= 15) {
+                                    val3++;
+
+                                }
+                                if (x.idade >= 16 && x.idade <= 18) {
+                                    val4++;
+
+                                }
+                                if (x.idade >= 19 && x.idade <= 23) {
+                                    val5++;
+
+                                }
+                                if (x.idade >= 24 && x.idade <= 35) {
+                                    val6++;
+
+                                }
+
+
+                            })
+
+
+                            if (!val2 == 0) { dadosGrid.push({ category: "11 - 12", value: calculo(val2, valorTotal), color: "#447dc7 " }) }
+                            if (!val3 == 0) { dadosGrid.push({ category: "13 - 15", value: calculo(val3, valorTotal), color: "#3586ee" }) }
+                            if (!val4 == 0) { dadosGrid.push({ category: "16- 18", value: calculo(val4, valorTotal), color: "#0f4fa2" }) }
+                            if (!val5 == 0) { dadosGrid.push({ category: "19 - 23", value: calculo(val5, valorTotal), color: "#08698d" }) }
+                            if (!val6 == 0) { dadosGrid.push({ category: "24 - 35", value: calculo(val6, valorTotal), color: "#1f407f" }) }
+                            if (!val1 == 0) { dadosGrid.push({ category: "6 - 10", value: calculo(val1, valorTotal), color: "#1f407f" }) }
+
+
+
+
+
+
+
+
+
+                            displayedDataGarphic = JSON.stringify(dadosGrid);
+
+
+                            createChart();
+
+
+                        }
+
+
+
+                        function calculo(val, total) {
+
+                            var porcentagem = parseInt('100');
+                            var total = val * (porcentagem / total);
+                            return total.toFixed();
+                        }
+
+                        $(".save_grid").kendoButton({
+                            click: function (e) {
+                                var grid = $("#grid").data("kendoGrid");
+                                grid.saveChanges();
+                                getjsonElement('#grid')
+
+
+
+                            }
+                        })
+
+
+
+
+                        AtualizarValorGraficoUsuarios();
+
+                    }
+                </script>
+
+
+                <style>
+                    .container-body {
+                        height: 80px;
+                    }
+
+
+                    pre {
+                        overflow: auto;
+                        margin: 8px 0px;
+                        padding: 20px;
+                        tab-size: 1;
+                        position: relative;
+                        background: #edf0f3;
+                        font-weight: normal;
+                        font-style: normal;
+                        font-size: -0.15em;
+                        line-height: 1.6;
+                        box-sizing: border-box;
+                        -webkit-font-smoothing: auto;
+                        font-family: 'Consolas', 'Courier New', Courier, monospace;
+                        width: 100%;
+                    }
+
+
+                    .k-header,
+                    .k-grid .k-header .k-button {
+                        background-color: #1f497f;
+                        border-color: none;
+                        font-size: 12px;
+
+
+                    }
+
+                    .k-grid .k-header .k-button:hover {
+                        background-color: #225291;
+
+
+
+                    }
+
+                    .k-button {
+                        border-color: #a7a7a700;
+
+
+                    }
+
+                    .k-button:hover {
+                        border-color: #a7a7a700;
+
+                    }
+
+                    .k-grid-content .k-auto-scrollable,
+                    .k-command-cell {
+                        font-size: 12px;
+
+                    }
+
+                    iframe {
+                        margin-left: 2.5%;
+                        height: 22%;
+                        width: 95%;
+                    }
+
+                    #wrapper h1 a {
+                        display: none;
+
+                    }
+                </style>
+
+
+                <!-- <% for (usuario of testusuarios){%>
+	<div class="col-sm-4">
+		<h2><%= usuario.name %>
+		<img class="img-responsive" style="height: 250px" src="<%= usuario.avatar %>">
+		<a href="<%= usuario.email%>"></a>email</a>
+	</div>
+<% } %> -->
+
+                <script>
+                    scroolimit = 80;
+                </script>

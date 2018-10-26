@@ -1,0 +1,18 @@
+
+ /* classes para ser utilizado MENU */
+.addblueslider{
+    -webkit-transition: 0.10s;
+    transition: 0.4s;
+    background: rgb(34, 77, 134)!important;
+    background-image: url("/img/grid.png");
+}
+.fil1{
+    fill: rgb(34, 77, 134);
+}
+.fillwhit{
+    fill:rgb(248, 248, 248)!important;
+}
+.fillblue{
+    fill: rgb(34, 77, 134)!important;
+}
+ /* classes para ser utilizado MENU */

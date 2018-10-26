@@ -1,0 +1,30 @@
+{
+  "name": "payfast",
+  "version": "1.0.0",
+  "description": "gateway de pagamentos utilizando recursos http.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "gateway",
+    "javascript"
+  ],
+  "author": "juliocvidal",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "consign": "^0.1.2",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.14.0",
+    "express-ejs-layouts": "^2.5.0",
+    "express-validator": "^2.20.8",
+    "faker": "^4.1.0",
+    "helmet": "^3.14.0",
+    "mysql": "^2.11.1",
+    "ytdl-core": "^0.26.3"
+  }
+}

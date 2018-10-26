@@ -1,0 +1,102 @@
+<%- contentFor('body') %>
+  <div class="container">
+			<div style="height: 80px; width: 100%;background: #224d86">
+
+				
+			</div>
+
+  <div style="height: 1800px; width: 100%;background: #ffffff">
+			<p style="  font-size:120%; color: #224d86;">
+					<strong style="color: #224d86;">Kendo-UI</strong> Utilizando graficos para facilita nosso gerenciamento.
+			</p>
+
+
+			<div style="height: 800px; width: 100%;background: #f7f7f8">
+
+
+					<pre class="brush:html hljs xml" style="
+					height: 83%;
+			"><code><span class="hljs-comment">&lt;!-- Pieces Slider --&gt;</span>
+									<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider"</span>&gt;</span>
+											<span class="hljs-comment">&lt;!-- Each slide with corresponding image and text --&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__slide"</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/ricardo-gomez-angel-381749.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__text"</span>&gt;</span>Ricardo Gomez Angel<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__slide"</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/josh-calabrese-527813.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__text"</span>&gt;</span>Josh Calabrese<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__slide"</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/samuel-zeller-103111.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__text"</span>&gt;</span>Samuel Zeller<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__slide"</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/sweet-ice-cream-photography-143023.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__text"</span>&gt;</span>Sweet Ice Cream<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__slide"</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/sticker-mule-199237.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+													<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__text"</span>&gt;</span>Sticker Mule<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+											<span class="hljs-comment">&lt;!-- Canvas to draw the pieces --&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__canvas"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+											<span class="hljs-comment">&lt;!-- Slider buttons: prev and next --&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__button pieces-slider__button--prev"</span>&gt;</span>prev<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+											<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pieces-slider__button pieces-slider__button--next"</span>&gt;</span>next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+									<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+
+
+				</div>
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+</div>
+     
+	
+	<style>
+	.container-body{
+		height: 80px;
+	}
+ 
+
+pre {
+    overflow: auto;
+    margin: 8px 0px;
+    padding: 20px;
+    tab-size: 1;
+    position: relative;
+    background: #edf0f3;
+    font-weight: normal;
+    font-style: normal;
+    font-size: -0.15em;
+    line-height: 1.6;
+    box-sizing: border-box;
+    -webkit-font-smoothing: auto;
+    font-family: 'Consolas','Courier New',Courier,monospace;
+    width: 100%;
+}
+	</style>
+
+
+<!-- <% for (usuario of testusuarios){%>
+	<div class="col-sm-4">
+		<h2><%= usuario.name %>
+		<img class="img-responsive" style="height: 250px" src="<%= usuario.avatar %>">
+		<a href="<%= usuario.email%>"></a>email</a>
+	</div>
+<% } %> -->
+
+<script>
+	scroolimit = 80;
+</script>

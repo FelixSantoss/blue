@@ -1,0 +1,663 @@
+<%- contentFor('body') %>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.material.mobile.min.css" />
+    <script src="https://kendo.cdn.telerik.com/2018.3.1017/js/kendo.all.min.js"></script>
+
+    <!-- <video width="320" height="240" title="Advertisement" playsinline="true" style="background-color: rgb(0, 0, 0); position: absolute; width: 640px; height: 360px;"
+        src="/video/video.mp4" autoplay="" controls>
+        <source src="movie.mp4" type="video/mp4">
+        <source src="movie.webm" type="video/webm">
+        <source src="movie.ogg" type="video/ogg"> Your browser does not support the video tag.
+    </video> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Definiçoes de video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="titulo" style="
+                                        color: #2066c1;
+                                        font-size: 18px;
+                                    ">Titulo</p>
+                            <br>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>Baixa qualidade</p>
+                            <button onclick="donvb('lowest','video')" class="btn b"> </button>
+                            <br>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center" style="padding: 19px">
+
+                            <p>Alta qualidade</p>
+                            <button onclick="donvb('highest','video')" class="btn l"> </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="audio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Definiçoes de audio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="titulo-Low" style="
+                                        color: #2066c1;
+                                        font-size: 18px;
+                                    ">Titulo</p>
+                            <br>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>Baixa qualidade</p>
+                            <button onclick="donvb('lowest','audio')" class="btn ba"> </button>
+                            <br>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center" style="padding: 19px">
+
+                            <p>Alta qualidade</p>
+                            <button onclick="donvb('highest','audio')" class="btn la"> </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="height: 80px; width: 100%;background: #224d86">
+
+            <p style="  font-size:120%; color: #ffffff;     padding: 25px;">Youtube
+                <strong style="color: #ffffff;"> mp4/mp3</strong>
+            </p>
+        </div>
+        <img class="load" src="/img/load.gif" alt="" style="
+        background: white;
+        position: absolute;
+        
+        z-index: 1;
+        opacity: 0.5;
+        width: 191px;
+        top: 50%;
+   
+     left: 22%;
+    ">
+
+
+        <div class="row">
+            <div class="col-sm-10" style=" height: 80px; padding: 15px">
+
+                <div class="alert alert_erro alert-danger" role="alert">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-sm-9" style=" height: 60px">
+                <input class="k-input" required="" id="urld" placeholder="Url youtube" type="text" style=" padding: 9px; margin-top: 5px; height: 80%;width: 100%; color:#224d86;background: #fffdfd;border: none;border-radius: 10px;box-shadow: 0px 2px 13px 0px #1f497f61;font-size: 27px;">
+                <button class="btnLimpaInput" style="
+                    float: right;
+                    background: #fffdfd;
+                    border: none;
+                    margin: -45px 8px -14px -9px;
+                    z-index: 9;
+                    position: relative;
+                    color: #bcbcbc;
+                    width: 48px;
+                    height: 43px;
+                ">X</button>
+            </div>
+            <div class="col-sm-3" style="height: 60px">
+                <div class="row">
+                    <div class="col-sm-6 text-center" style=" height: 60px">
+                        <input id="selects" type="text" style="width: 95%;margin-top: 10px; max-width: 150px">
+
+                    </div>
+                    <div class="col-sm-6  text-center " style=" height: 60px">
+                        <button style="width: 95%;margin-top: 10px; max-width: 150px" class="btn k-button text-center ir">Converte</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script>
+            var tamanhos = [];
+            var name = "";
+
+            $(".navbar .nav-link").on("click", function () {
+                $(".navbar ").find(".active").removeClass("active");
+                $(this).addClass("active");
+            });
+
+            $('.btnLimpaInput').click(function () {
+                $('#urld').val('');
+            });
+            $(document).ready(function () {
+                $('.load , .alert_erro').hide()
+                $("#selects").kendoDropDownList({
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    dataSource: data,
+                    index: 0,
+                });
+            });
+
+            $('.ir').click(function () {
+                let valInput = $("#selects").data("kendoDropDownList").text();
+
+                if (valInput == "Mp4") {
+                    v4low();
+                } else { a3(); }
+            });
+
+            function v4low() {
+                tamanhos.length = 0;
+                $('.alert_erro').hide()
+                $('.load').show();
+                var url = $('#urld').val();
+
+                $.ajax({
+                    url: `/consulta?url=${url}&qualite=lowest&type=video`,
+                    type: 'POST',
+                    responseType: "blob",
+                    success: function (data, textStatus, xhr) {
+                        tamanhos.push(data[1]);
+
+                        setTimeout(() => {
+                            v4hight();
+
+                        }, 1000);
+                    },
+                    error: function (error) {
+                        $('.alert_erro').show().text(error.responseText)
+                        $('.load').hide()
+                    },
+                })
+            }
+            function v4hight() {
+
+                $('.alert_erro').hide()
+                $('.load').show();
+                var url = $('#urld').val();
+
+                $.ajax({
+                    url: `/consulta?url=${url}&qualite=highest&type=video`,
+                    type: 'POST',
+                    responseType: "blob",
+                    success: function (data, textStatus, xhr) {
+                        tamanhos.push(data[1]);
+                        name = data[0];
+                        $('.load').hide()
+                        $('.titulo').text(data[0])
+
+                        $('.b').text(tamanhos[0])
+                        $('.l').text(tamanhos[1])
+                        $('#video').modal('show');
+
+                    },
+                    error: function (error) {
+                        $('.alert_erro').show().text(error.responseText)
+                        $('.load').hide()
+                    },
+                })
+            }
+            function a3() {
+                tamanhos.length = 0;
+                $('.alert_erro').hide()
+                $('.load').show();
+                var url = $('#urld').val();
+
+                $.ajax({
+                    url: `/consulta?url=${url}&qualite=lowest&type=audio`,
+                    type: 'POST',
+                    responseType: "blob",
+                    success: function (data, textStatus, xhr) {
+                        setTimeout(() => {
+                            a3h();
+
+                        }, 1000);
+                        tamanhos.push(data[1]);
+                    },
+                    error: function (error) {
+                        $('.alert_erro').show().text(error.responseText)
+                        $('.load').hide()
+                    },
+                })
+            }
+
+            function a3h() {
+                $('.alert_erro').hide()
+                $('.load').show();
+                var url = $('#urld').val();
+
+                $.ajax({
+                    url: `/consulta?url=${url}&qualite=highest&type=audio`,
+                    type: 'POST',
+                    responseType: "blob",
+                    success: function (data, textStatus, xhr) {
+                        tamanhos.push(data[1]);
+                        $('.titulo-Low').text(data[0])
+                        name = data[0];
+
+                        $('.ba').text(tamanhos[0])
+                        $('.la').text(tamanhos[1])
+                        $('#audio').modal('show');
+                        $('.load').hide()
+                    },
+                    error: function (error) {
+                        $('.alert_erro').show().text(error.responseText)
+                        $('.load').hide()
+                    },
+                })
+            }
+
+
+            var data = [
+                { text: "Mp4", value: "1" },
+                { text: "Mp3", value: "2" },
+            ];
+
+
+
+
+
+            $('.btn_mp4').click(function () {
+                $('.alert_erro').hide()
+                var url = $('#urld').val();
+
+                if (url == "") {
+                    alert("insira uma URL")
+                } else {
+                    $('.load').show();
+                    // var xhr = new XMLHttpRequest(); // O tratamento de múltiplos browsers foi omitido por brevidade
+
+                    // // Ponto 1
+
+                    // xhr.onreadystatechange = function () {
+
+                    //     // Ponto 4
+
+                    //     if (this.readyState == 4) {
+                    //         // Ponto 5
+
+                    //         if (this.status == 200) {
+                    //             $('.load').hide()
+                    //             console.log(xhr.response);
+
+                    //             download(xhr.response, "a.mp4", "video/mp4");
+
+                    //             // Ponto 6
+                    //         } if (this.status == 400) {
+                    //             console.log(xhr);
+
+                    //         }
+                    //     }
+                    // }
+                    // xhr.responseType = 'blob';
+
+                    // // Ponto 2
+
+                    // xhr.open('POST', `/videod?url=${url}`, true);
+                    // xhr.send(null);
+
+                    // Ponto 3
+                }
+            });
+
+            //////////////////////////////vido baxa qualidade//////////////////////////////////
+            function donvb(qualit, type) {
+                var title = "";
+                var typefile = "";
+
+                if (type == 'audio') {
+                    title = name + ".mp3";
+                    typefile = "audio/mp3";
+                } else {
+                    title = name + ".mp4";
+                    typefile = "video/mp4";
+                }
+                var urll = $('#urld').val();
+                $('#video,#audio').modal('hide');
+                $('.load').show();
+                var xhr = new XMLHttpRequest(); // O tratamento de múltiplos browsers foi omitido por brevidade
+                // Ponto 1
+                xhr.onprogress = function (e) {
+                        if (e.lengthComputable)
+                            var percent = (e.loaded / e.total) * 100;
+                         
+                            formatSizeUnits(e.loaded)
+                            
+                    };
+                xhr.onreadystatechange = function () {
+                    // Ponto 4
+                    if (this.readyState == 4) {
+                        // Ponto 5
+                        if (this.status == 200) {
+                            $('.load').hide()
+                             download(xhr.response, title, typefile);
+                            // Ponto 6
+                        }
+                    }
+                }
+                xhr.responseType = 'blob';
+                // Ponto 2
+                xhr.open('POST', `/videod?url=${urll}&qualite=${qualit}&type=${type}`, true);
+                xhr.send(null);
+                // Ponto 3
+            }
+            //////////////////////////////vido baxa qualidade//////////////////////////////////
+
+
+
+
+   function formatSizeUnits(bytes) {
+        if (bytes >= 1073741824) { bytes = (bytes / 1073741824).toFixed(2) + " GB"; }
+        else if (bytes >= 1048576) { bytes = (bytes / 1048576).toFixed(2) + " MB"; }
+        else if (bytes >= 1024) { bytes = (bytes / 1024).toFixed(2) + " KB"; }
+        else if (bytes > 1) { bytes = bytes + " bytes"; }
+        else if (bytes == 1) { bytes = bytes + " byte"; }
+        else { bytes = "0 bytes"; }
+         console.log(bytes);
+        
+    }
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+            $('.btn_mp3').click(function () {
+                var url = $('#urld').val();
+
+                if (url == "") {
+                    alert("insira uma URL")
+                } else {
+                    $('.load').show();
+                    var xhr = new XMLHttpRequest(); // O tratamento de múltiplos browsers foi omitido por brevidade
+                    // Ponto 1
+                    xhr.onprogress=updateProgress;
+
+                    xhr.onreadystatechange = function () {
+                        // Ponto 4
+                        if (this.readyState == 4) {
+                            // Ponto 5
+                            if (this.status == 200) {
+                                $('.load').hide()
+                                console.log(xhr.response);
+                                download(xhr.response, "a.mp3", "video/mp4");
+                                // Ponto 6
+                            }
+                        }
+                    }
+                    xhr.responseType = 'blob';
+                    // Ponto 2
+                    xhr.onprogress = function (e) {
+                        if (e.lengthComputable)
+                            var percent = (e.loaded / e.total) * 100;
+                            console.log(percent);
+                            
+                    };
+                    xhr.open('POST', `/mp3?url=${url}`, true);
+                    xhr.send(null);
+                    // Ponto 3
+
+
+
+
+
+
+
+
+
+                    
+                }
+
+
+
+
+
+
+            });
+
+
+
+
+            $('.oid').click(function () {
+
+            })
+
+
+
+
+
+            function getBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    console.log(reader.result);
+                };
+                reader.onerror = function (error) {
+                    console.log('Error: ', error);
+                };
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //download.js v3.0, by dandavis; 2008-2014. [CCBY2] see http://danml.com/download.html for tests/usage
+            // v1 landed a FF+Chrome compat way of downloading strings to local un-named files, upgraded to use a hidden frame and optional mime
+            // v2 added named files via a[download], msSaveBlob, IE (10+) support, and window.URL support for larger+faster saves than dataURLs
+            // v3 added dataURL and Blob Input, bind-toggle arity, and legacy dataURL fallback was improved with force-download mime and base64 support
+
+            // data can be a string, Blob, File, or dataURL
+
+
+
+
+            function download(data, strFileName, strMimeType) {
+
+                var self = window, // this script is only for browsers anyway...
+                    u = "application/octet-stream", // this default mime also triggers iframe downloads
+                    m = strMimeType || u,
+                    x = data,
+                    D = document,
+                    a = D.createElement("a"),
+                    z = function (a) { return String(a); },
+
+
+                    B = self.Blob || self.MozBlob || self.WebKitBlob || z,
+                    BB = self.MSBlobBuilder || self.WebKitBlobBuilder || self.BlobBuilder,
+                    fn = strFileName || "download",
+                    blob,
+                    b,
+                    ua,
+                    fr;
+
+                //if(typeof B.bind === 'function' ){ B=B.bind(self); }
+
+                if (String(this) === "true") { //reverse arguments, allowing download.bind(true, "text/xml", "export.xml") to act as a callback
+                    x = [x, m];
+                    m = x[0];
+                    x = x[1];
+                }
+
+
+
+                //go ahead and download dataURLs right away
+                if (String(x).match(/^data\:[\w+\-]+\/[\w+\-]+[,;]/)) {
+                    return navigator.msSaveBlob ?  // IE10 can't do a[download], only Blobs:
+                        navigator.msSaveBlob(d2b(x), fn) :
+                        saver(x); // everyone else can save dataURLs un-processed
+                }//end if dataURL passed?
+
+                try {
+
+                    blob = x instanceof B ?
+                        x :
+                        new B([x], { type: m });
+                } catch (y) {
+                    if (BB) {
+                        b = new BB();
+                        b.append([x]);
+                        blob = b.getBlob(m); // the blob
+                    }
+
+                }
+
+
+
+                function d2b(u) {
+                    var p = u.split(/[:;,]/),
+                        t = p[1],
+                        dec = p[2] == "base64" ? atob : decodeURIComponent,
+                        bin = dec(p.pop()),
+                        mx = bin.length,
+                        i = 0,
+                        uia = new Uint8Array(mx);
+
+                    for (i; i < mx; ++i) uia[i] = bin.charCodeAt(i);
+
+                    return new B([uia], { type: t });
+                }
+
+                function saver(url, winMode) {
+
+
+                    if ('download' in a) { //html5 A[download] 			
+                        a.href = url;
+                        a.setAttribute("download", fn);
+                        a.innerHTML = "downloading...";
+                        D.body.appendChild(a);
+                        setTimeout(function () {
+                            a.click();
+                            D.body.removeChild(a);
+                            if (winMode === true) { setTimeout(function () { self.URL.revokeObjectURL(a.href); }, 250); }
+                        }, 66);
+                        return true;
+                    }
+
+                    //do iframe dataURL download (old ch+FF):
+                    var f = D.createElement("iframe");
+                    D.body.appendChild(f);
+                    if (!winMode) { // force a mime that will download:
+                        url = "data:" + url.replace(/^data:([\w\/\-\+]+)/, u);
+                    }
+
+
+                    f.src = url;
+                    setTimeout(function () { D.body.removeChild(f); }, 333);
+
+                }//end saver 
+
+
+                if (navigator.msSaveBlob) { // IE10+ : (has Blob, but not a[download] or URL)
+                    return navigator.msSaveBlob(blob, fn);
+                }
+
+                if (self.URL) { // simple fast and modern way using Blob and URL:
+                    saver(self.URL.createObjectURL(blob), true);
+                } else {
+                    // handle non-Blob()+non-URL browsers:
+                    if (typeof blob === "string" || blob.constructor === z) {
+                        try {
+                            return saver("data:" + m + ";base64," + self.btoa(blob));
+                        } catch (y) {
+                            return saver("data:" + m + "," + encodeURIComponent(blob));
+                        }
+                    }
+
+                    // Blob but not URL:
+                    fr = new FileReader();
+                    fr.onload = function (e) {
+                        saver(this.result);
+                    };
+                    fr.readAsDataURL(blob);
+                }
+                return true;
+            } /* end download() */
+
+        </script>
+        <style>
+            .container-body {
+                height: 80px;
+            }
+
+            .k-icon {
+                display: none
+            }
+
+            .k-dropdown-wrap {
+                box-shadow: -1px 3px 10px 0px #d1d1d1;
+
+            }
+        </style>
+
+        <script>
+            scroolimit = 80;
+        </script>

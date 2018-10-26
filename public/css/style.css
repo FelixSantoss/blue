@@ -1,0 +1,142 @@
+    .container-menu{
+        transition: 0.3s;
+        background: rgb(255, 255, 255);
+        background-image: url("/img/grid.png");
+        position: fixed;
+        margin-top: -60px;
+        width: 100%;
+        box-shadow: 0px 2px 20px 0px black;
+        z-index: 2;
+
+    }
+
+    body{
+        background-image: url("/img/grid.png");
+    }
+    .container-home{
+        background: rgb(255, 255, 255);
+        background-image: url("/img/grid.png");
+        height: 1900px;
+
+    }
+    .container-slider{
+        background: #224d86;
+        height: 300px;   
+    }
+    .container-body{
+        margin-top: 60px;
+        background: blue;
+        height: 300px;   
+    }
+
+    .nav-menu {
+        
+        margin-top: -230px;
+    }
+
+    nav a{
+        font-size: 17px!important;
+        
+        padding-bottom: 12px!important;
+        margin-top: 5px;
+        font-family: Tahoma, Verdana, Segoe, sans-serif;
+
+    }
+   .dropdown-toggle{
+        color: rgb(141, 141, 141)!important ;   
+       
+    }
+
+    .dropdown{
+        top: 13px;
+        left: 17px;
+
+    }
+    /* .container {
+        max-width: 1636px!important;
+    } */
+
+
+    /* .cads-unit-hover:hover{
+        -webkit-transition: 0.2 s;
+        transition: 0.2s;
+        background: #152741a8;
+        height: 220px;
+        border-radius: 7px;
+
+
+    } */
+
+    .active{
+        color: #224d86!important;
+        border-bottom: 3px solid #1f497f;
+    }
+    
+
+    .cads-cel-home{
+        border-radius: 17px; 
+        background: #cecece;
+        height: 200px; 
+        padding: 0px;
+        margin: 0px 0px 0px;
+    }
+
+    .cads-cel-home img{
+        box-shadow: 0px 0px 11px 0px #c7c7c7;
+
+        width: 100%;
+        height: 100%; 
+        border-radius: 17px;
+    }
+
+    .cads-cel-home .btn{
+        position: relative;
+        top: -112px;
+        left: 109px;
+        background: #feffff;
+        box-shadow: 0px 1px 5px 0px #b6b6b6;
+        color: #1f497f;
+        height: 28px;
+        padding: 0px;
+        width: 140px;
+    }
+
+    .titulo-tutorial{
+        font-size:120%;
+        color: #ffffff;
+        padding: 25px;
+
+    }
+
+    .save_grid{
+        
+    }
+
+    @media only screen and (max-width: 600px) {
+    
+
+
+
+        .titulo-tutorial{
+            padding: 14px!important;
+
+        }
+    .navbar-nav{
+        background: rgb(255, 255, 255);
+        padding: 26px;
+        /* margin: 4px; */
+        /* left: 20px; */
+        margin-left: -207px;
+    }
+    .navbar-nav , .navbar-collapse{
+        width: 152%!important;
+
+    }
+.navbar-toggler{
+ }
+
+
+
+
+
+    }

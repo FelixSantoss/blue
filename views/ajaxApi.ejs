@@ -1,0 +1,40 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <button id="ajax">Chama ajax</button>
+    <button id="buscar">Buscar</button>
+<script>
+
+    var dados = {
+        "forma_de_pagamento": "payfast1",
+        "valor":  "11",
+        "moeda": "BRL",
+        "descricao": "descrição do pagamento"
+    }
+
+
+    $('#ajax').click(function () {  
+        var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://localhost:3000/pagamentos/pagamento",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/json",
+    "cache-control": "no-cache"
+   },
+  "processData": false,
+  "data": "{\r\n        \"forma_de_pagamento\": \"test1\",\r\n        \"valor\":  \"111\",\r\n        \"moeda\": \"BRL\",\r\n        \"descricao\": \"test felix\"\r\n    }\r\n"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+    })
+
+
+
+
+</script>
+
