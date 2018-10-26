@@ -15,6 +15,7 @@
   "author": "juliocvidal",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/compute": "^0.10.0",
     "body-parser": "^1.15.2",
     "consign": "^0.1.2",
     "cors": "^2.8.4",
